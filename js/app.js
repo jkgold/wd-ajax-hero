@@ -55,6 +55,46 @@
       $('.modal-trigger').leanModal();
     }
   };
+$('button').on('click', function(event){
+  event.preventDefault();
+  var $userInput = $('input');
+  if($userInput.val() === ""){
+    console.log("yo mama");
+    return;
+  }
+var $userApi = 'http://www.omdbapi.com/?s=';
+$userApi += $userInput.val();
+var $xhr = $.getJSON($userApi);
+$xhr.done(function(data){
+  if ($xhr.status !==200) {
+    return;
+  }
+  movies.push(data)
+  console.log(movies);
+  // console.log(data);
+});
 
+  // console.log(data.Title);
+  // console.log(data.Year);
+});
+// $xhr.fail(fuction(err){
+//   console.log(err);
+// });
+
+  //below is vanella ja
+//   var xhr = new XMLHttpRequest();
+//   console.log(xhr);
+// xhr.addEventListener('Load', function(){
+//   if (xhr.status !== 200){
+//     // console.log("not right address");
+//     return;
+//   }
+// var data =JSON.parse(xhr.responseText);
+// console.log(data);
+//
+// });
+// xhr.open('Get', 'http://www.omdbapi.com/?t=The fifth element');
+// xhr.send();
+// })
   // ADD YOUR CODE HERE
 })();
