@@ -69,9 +69,26 @@ $xhr.done(function(data){
   if ($xhr.status !==200) {
     return;
   }
-  movies.push(data)
-  console.log(movies);
-  // console.log(data);
+  // movies.push(data)
+  // console.log(movies);
+  console.log(data);
+  for (var i = 0; i < data.Search.length; i++){
+  var movie = {
+    id: data.Search[i]["Title"],
+    poster: data.Search[i] ["Poster"],
+    imdbID: data.Search[i] ["imdbID"],
+    year: data.Search[i] ["Year"],
+  };
+
+  movies.push(movie);
+
+}
+  movies.push(data.Search[0] ["Poster"]);
+  movies.push(data.Search[0] ["imdbID"]);
+console.log(data);
+console.log(data.Search[0] ["Poster"]);
+
+  renderMovies();
 });
 
   // console.log(data.Title);
